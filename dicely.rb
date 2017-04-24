@@ -13,15 +13,15 @@ get '/' do
 end
 
 get '/roll' do
-  render_results_in_json Dice.roll
+  render_results_in_json DiceRoller.roll
 end
 
 get '/roll/:number_of_dice' do
-  render_results_in_json Dice.roll(number_of_dice: number_of_dice)
+  render_results_in_json DiceRoller.roll(number_of_dice: number_of_dice)
 end
 
 get '/roll/:number_of_dice/d/:number_of_faces' do
-  render_results_in_json Dice.roll(number_of_dice: number_of_dice, number_of_faces: number_of_faces)
+  render_results_in_json DiceRoller.roll(number_of_dice: number_of_dice, number_of_faces: number_of_faces)
 end
 
 private
