@@ -1,7 +1,12 @@
 require 'sinatra'
 require 'json'
-require_relative 'lib/dice'
-require_relative 'lib/dice_serialiser'
+
+configure do
+  $LOAD_PATH.unshift("#{File.dirname(__FILE__)}/lib")
+  Dir.glob("#{File.dirname(__FILE__)}/lib/*.rb") do |lib|
+    require File.basename(lib, '.*')
+  end
+end
 
 get '/' do
   'Die World!'
