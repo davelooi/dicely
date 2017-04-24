@@ -5,6 +5,9 @@ Sequel.migration do
       Integer :die_faces
       Integer :result
 
+      DateTime :created_at 
+      DateTime :updated_at 
+
       index :die_faces
       index :result
     end
