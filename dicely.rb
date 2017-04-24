@@ -1,15 +1,23 @@
 require 'sinatra'
 require 'json'
+require 'sequel'
+require 'sqlite3'
 
 configure do
   $LOAD_PATH.unshift("#{File.dirname(__FILE__)}/lib")
   Dir.glob("#{File.dirname(__FILE__)}/lib/*.rb") do |lib|
     require File.basename(lib, '.*')
   end
+  $LOAD_PATH.unshift("#{File.dirname(__FILE__)}/models")
+  Dir.glob("#{File.dirname(__FILE__)}/models/*.rb") do |lib|
+    require File.basename(lib, '.*')
+  end
 end
 
 get '/' do
-  'Die World!'
+  {
+    total_rolls: Roll.count
+  }.to_json
 end
 
 get '/roll' do

@@ -6,6 +6,8 @@ class DiceRoller
   end
 
   def self.roll_a_die(number_of_faces:)
-    rand(number_of_faces) + 1
+    result = rand(number_of_faces) + 1
+    Roll.create(die_faces: number_of_faces, result: result)
+    result
   end
 end
