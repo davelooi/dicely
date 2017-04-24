@@ -1,7 +1,6 @@
 require 'sinatra'
 require 'json'
 require 'sequel'
-require 'sqlite3'
 
 configure do
   $LOAD_PATH.unshift("#{File.dirname(__FILE__)}/lib")
